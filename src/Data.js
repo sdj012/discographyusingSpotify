@@ -10,12 +10,6 @@ class Data extends React.Component{
     this.state={
       
       albums:[],
-      albumName:"",
-      idAndTrackArr:[],
-      tracks:[],
-      link:[],
-      year:"",
-      trackFinal:[],
       idAndImage:[],
     }
     
@@ -111,7 +105,7 @@ class Data extends React.Component{
         )} 
 
     <br></br>
-    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    {/* <script src="https://sdk.scdn.co/spotify-player.js"></script> */}
     </div>
   )
   }
