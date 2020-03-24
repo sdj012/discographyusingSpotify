@@ -1,7 +1,7 @@
 import React from 'react';
 import Album from './Album';
+
 class Data extends React.Component{
-  
 
   constructor(props){
     
@@ -50,6 +50,48 @@ class Data extends React.Component{
         [[result.items[i].id],[result.items[i].images]]
       )
     }
+
+    arr.sort(function compare(a, b) {
+      var dateA = new Date(a[1]);
+      var dateB = new Date(b[1]);
+      return dateA - dateB;
+    });
+
+    // arr.reverse();
+
+    // //  console.log("albumsDupFix : " + arr.toString())
+    //  let compStr="";
+    //  let finalArr=[];
+ 
+    //    for(let i=0;i<arr.length;i++){
+      
+    //      compStr=arr[i][0].toString().toUpperCase();
+    //      arr[i][0]=compStr;
+
+    //      console.log("compStr:  " + compStr)
+ 
+    //        if(arr[i][0].toString().includes(",")==1) {
+    //          compStr=arr[i][0].toString().replace(','," ");
+    //          console.log("compStr ',' fixed:  " + compStr)
+    //          arr[i][0]=compStr;
+    //        }
+ 
+    //        if(finalArr.length==0) finalArr.push(arr[i])
+
+    //          for(let j=0;j<finalArr.length;j++){
+
+    //              if(finalArr[j][0].toString().includes(arr[i][0].toString())==0){
+    //                finalArr.push(arr[i])
+    //              }
+
+
+    //         }
+         
+    //    }
+
+    // finalArr.reverse();
+
+    // console.log("finalArr: " + finalArr)
     
     this.setState({
       albums:arr,
@@ -66,13 +108,13 @@ class Data extends React.Component{
 
       if(id.localeCompare(this.state.idAndImage[i][0])===0){
 
-        console.log("loopp")
+        // console.log("loopp")
 
         for(let j=0;j<this.state.idAndImage[i][1][0].length;j++){
 
-          console.log("urls: " + JSON.stringify(this.state.idAndImage[i][1][0][j].url))
+          // console.log("urls: " + JSON.stringify(this.state.idAndImage[i][1][0][j].url))
 
-          uri=this.state.idAndImage[i][1][0][0].url
+          uri=this.state.idAndImage[i][1][0][1].url
         }
 
       }
@@ -84,31 +126,63 @@ class Data extends React.Component{
 
   }
 
+  // albumsDupFix=(array)=>{
+
+  //   console.log("albumsDupFix : " + array)
+  //   let compStr="";
+  //   let finalArr=[];
+
+  //     for(let i=0;i<array.length;i++){
+
+  //       compStr=array[i][0].toString()
+
+  //         if(array[i][0].toString().includes(",")==1) {
+  //           compStr=array[i][0].toString().replace(','," ");
+  //         }
+
+  //         if(finalArr.length!=0){
+
+  //           for(let i=0;i<finalArr.length;i++){
+  //               if(finalArr[i][0].toString().includes(compStr.toUpperCase()==0)){
+  //                 finalArr.push(array[i])
+  //               }
+  //             }
+
+  //         }
+        
+  //     }
+  //   return finalArr;
+  // }
+
 
 
   render(){
+
+   
   return(
 
-    <div className="data">
+    <div className="data flex-container">
 
       {this.state.albums.map(item =>
 
-          <div>
+          <div className="flex-item">
             <br></br>
             <b>{item[1]}</b>
             <div><b>{item[0]}</b></div>
-            <p>Tracks: </p>
-            <img src={this.covers(item[2].toString())}></img>
             <Album id={item[2]}/>
+
+
+            <img src={this.covers(item[2].toString())}></img>
           </div>
 
         )} 
 
-    <br></br>
-    {/* <script src="https://sdk.scdn.co/spotify-player.js"></script> */}
     </div>
   )
   }
 }
 
 export default Data;
+
+    {/* <script src="https://sdk.scdn.co/spotify-player.js"></script> */}
+
