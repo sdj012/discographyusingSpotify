@@ -5,8 +5,6 @@ class Album extends React.Component{
 
   constructor(props){
 
-    console.log("Album" + props)
-
     super(props);
 
     this.state={
@@ -19,8 +17,11 @@ class Album extends React.Component{
   }
 
   Trackdata = (result) => {
-    console.log("-----------------------Tracks-----------------------")
-    console.log("hit: trackdata");
+    // console.log("-----------------------Tracks-----------------------")
+    // console.log("hit: trackdata");
+
+
+
     let i=0;
     let arr=[];
     let arr2=[];
@@ -36,15 +37,18 @@ class Album extends React.Component{
       link:arr2,
      })
 
+    //  console.log("tracks: " + this.state.tracks);
+
 
   }
   
   componentDidMount(){
 
+
     fetch("https://api.spotify.com/v1/albums/"+this.props.id+"/tracks?limit=50", {
       headers: {
         Accept: "application/json",
-        Authorization: "Bearer BQDP7tSaKCbE1hv647a5Vq1GeHwzBjnvuvHKJHxLVSSpEpkHhacvOXyYOP7mXPEsQKTlKUvWavHegXDAO2vU-yay08xCH17glA0XAoaC7Isfr0tzc32Cp_TVh0xaKxp1hIqoeFSKnoaQoX28o1vUtqZjAHiLhb4",
+        Authorization: "Bearer BQAPWNYpBpTurkibLXzjsGnDu-9q-SfQVInZ6vzL6WFgLGIWw6c5MFFkiNaoskeR_qriAUTaSM0aMsPHJzgvyEvzixVcA9sOGLv5vt40ek-H6XdLhoezA0vjGYXix4AdTFVqyAQfKZBoYl-D0nGJv_EvfNZyk0c",
         "Content-Type": "application/json"
       }
       })   
@@ -53,12 +57,26 @@ class Album extends React.Component{
       .catch(error=>error);
   }
 
-  render()
-    return(){
+  render(){
+    return(
+      <div>
 
-      <div></div>
+      {/* <div>{this.state.id}</div> */}
+     {/* {this.state.tracks} */}
 
-    }
+      {this.state.tracks.map(item =>
+
+        <div>
+          <p>{item}</p>
+        </div>
+
+
+      )}
+      
+      </div>
+
+    )
+  }
   
 
 }
