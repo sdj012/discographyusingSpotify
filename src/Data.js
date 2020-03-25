@@ -20,7 +20,7 @@ class Data extends React.Component{
       fetch("https://api.spotify.com/v1/artists/3Nrfpe0tUJi4K4DXYWgMUX/albums?limit=50", {
         headers: {
           Accept: "application/json",
-          Authorization: "Bearer BQD3LGm6HnlXuSozAjNzCZTokJdIrkF-olTtHQTaeBhUq_hKOfyriRECZ0AMJbG_MluPzEWT2BWe_jco4waVtISRqSBwp8DO8DuxjElE-YbyiX6YjDGJuNiLw1j2mY4vV3UmuScKSphPOG5eUttgBvuHGdTurv8",
+          Authorization: "Bearer BQBUGplY-fmdhzGKePyKMXvBNdTZnAWGXAd3h5n3KOze05pTGtB3z78Lz97TDqQINnVOCBPSppZ6NtxayIuhW3LESUuSBJFt6qh9LPib52U4P0lEppT391_JyoC7tF_or_EyPCENE8GnTX5Smdpvn8RuQQoJr0g",
           "Content-Type": "application/json"
         }
       })
@@ -40,7 +40,7 @@ class Data extends React.Component{
 
     for(let i=0;i<result.items.length;i++){
       
-      console.log(i + ":" + result.items[i].name)
+      // console.log(i + ":" + result.items[i].name)
 
       if(i!==1 && i!==8 && i!==10 && i!==12 && i!==13 && i!==15 && i!==18 && i!==21 && i!==22 && i!==24 && i!==27 && i!==29 && i!==41 && i!==43){ // avoid duplicity
 
@@ -65,7 +65,7 @@ class Data extends React.Component{
       return dateA - dateB;
     });
 
-    console.log(arr)
+    // console.log(arr)
 
  
 
@@ -113,19 +113,25 @@ class Data extends React.Component{
     <div className="data flex-container">
 
       {this.state.albums.map(item =>
-          <div className="flex-item">
-             <b>{item[0]}</b>
-   
 
-            <img src={this.covers(item[2].toString())}></img>
-
-
-            <br></br>
-            <b>{item[1]}</b>
+        <div className="album">
  
-            <Album id={item[2]}/>
+            <div className="flex-item-TrackList">
+              <Album id={item[2]}/>
+            </div>
 
-          </div>
+            <div className="flex-item-Cover">
+              <img src={this.covers(item[2].toString())}></img>
+              <br></br>
+              {/* <b>{item[1]}</b> date*/} 
+            </div>
+
+            <div className="flex-item-albumTitle">
+              <div><b>{item[0]}</b></div>
+            </div>
+
+        </div>
+
         )} 
 
     </div>
