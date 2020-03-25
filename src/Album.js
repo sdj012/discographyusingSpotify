@@ -48,7 +48,7 @@ class Album extends React.Component{
     fetch("https://api.spotify.com/v1/albums/"+this.props.id+"/tracks?limit=50", {
       headers: {
         Accept: "application/json",
-        Authorization: "Bearer BQAPWNYpBpTurkibLXzjsGnDu-9q-SfQVInZ6vzL6WFgLGIWw6c5MFFkiNaoskeR_qriAUTaSM0aMsPHJzgvyEvzixVcA9sOGLv5vt40ek-H6XdLhoezA0vjGYXix4AdTFVqyAQfKZBoYl-D0nGJv_EvfNZyk0c",
+        Authorization: "Bearer BQD3LGm6HnlXuSozAjNzCZTokJdIrkF-olTtHQTaeBhUq_hKOfyriRECZ0AMJbG_MluPzEWT2BWe_jco4waVtISRqSBwp8DO8DuxjElE-YbyiX6YjDGJuNiLw1j2mY4vV3UmuScKSphPOG5eUttgBvuHGdTurv8",
         "Content-Type": "application/json"
       }
       })   
@@ -67,7 +67,7 @@ class Album extends React.Component{
       {this.state.tracks.map(item =>
 
         <div>
-          <p>{item}</p>
+          {item}
         </div>
 
 

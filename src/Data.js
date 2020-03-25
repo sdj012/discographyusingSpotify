@@ -20,7 +20,7 @@ class Data extends React.Component{
       fetch("https://api.spotify.com/v1/artists/3Nrfpe0tUJi4K4DXYWgMUX/albums?limit=50", {
         headers: {
           Accept: "application/json",
-          Authorization: "Bearer BQAPWNYpBpTurkibLXzjsGnDu-9q-SfQVInZ6vzL6WFgLGIWw6c5MFFkiNaoskeR_qriAUTaSM0aMsPHJzgvyEvzixVcA9sOGLv5vt40ek-H6XdLhoezA0vjGYXix4AdTFVqyAQfKZBoYl-D0nGJv_EvfNZyk0c",
+          Authorization: "Bearer BQD3LGm6HnlXuSozAjNzCZTokJdIrkF-olTtHQTaeBhUq_hKOfyriRECZ0AMJbG_MluPzEWT2BWe_jco4waVtISRqSBwp8DO8DuxjElE-YbyiX6YjDGJuNiLw1j2mY4vV3UmuScKSphPOG5eUttgBvuHGdTurv8",
           "Content-Type": "application/json"
         }
       })
@@ -39,17 +39,25 @@ class Data extends React.Component{
     let iarr=[];
 
     for(let i=0;i<result.items.length;i++){
-      arr.push(
-        [
-          [[result.items[i].name]],[[result.items[i].release_date]],
-          [[result.items[i].id]]
-        ]
-      );
+      
+      console.log(i + ":" + result.items[i].name)
 
-      iarr.push(
-        [[result.items[i].id],[result.items[i].images]]
-      )
+      if(i!==1 && i!==8 && i!==10 && i!==12 && i!==13 && i!==15 && i!==18 && i!==21 && i!==22 && i!==24 && i!==27 && i!==29 && i!==41 && i!==43){ // avoid duplicity
+
+        arr.push(
+          [
+            [[result.items[i].name]],[[result.items[i].release_date]],
+            [[result.items[i].id]]
+          ]
+        );
+
+        iarr.push(
+          [[result.items[i].id],[result.items[i].images]]
+        )
+
+      }
     }
+
 
     arr.sort(function compare(a, b) {
       var dateA = new Date(a[1]);
@@ -57,41 +65,10 @@ class Data extends React.Component{
       return dateA - dateB;
     });
 
-    // arr.reverse();
+    console.log(arr)
 
-    // //  console.log("albumsDupFix : " + arr.toString())
-    //  let compStr="";
-    //  let finalArr=[];
  
-    //    for(let i=0;i<arr.length;i++){
-      
-    //      compStr=arr[i][0].toString().toUpperCase();
-    //      arr[i][0]=compStr;
 
-    //      console.log("compStr:  " + compStr)
- 
-    //        if(arr[i][0].toString().includes(",")==1) {
-    //          compStr=arr[i][0].toString().replace(','," ");
-    //          console.log("compStr ',' fixed:  " + compStr)
-    //          arr[i][0]=compStr;
-    //        }
- 
-    //        if(finalArr.length==0) finalArr.push(arr[i])
-
-    //          for(let j=0;j<finalArr.length;j++){
-
-    //              if(finalArr[j][0].toString().includes(arr[i][0].toString())==0){
-    //                finalArr.push(arr[i])
-    //              }
-
-
-    //         }
-         
-    //    }
-
-    // finalArr.reverse();
-
-    // console.log("finalArr: " + finalArr)
     
     this.setState({
       albums:arr,
@@ -99,6 +76,7 @@ class Data extends React.Component{
     })
 
   }
+
 
   covers=(id)=>{
 
@@ -126,35 +104,6 @@ class Data extends React.Component{
 
   }
 
-  // albumsDupFix=(array)=>{
-
-  //   console.log("albumsDupFix : " + array)
-  //   let compStr="";
-  //   let finalArr=[];
-
-  //     for(let i=0;i<array.length;i++){
-
-  //       compStr=array[i][0].toString()
-
-  //         if(array[i][0].toString().includes(",")==1) {
-  //           compStr=array[i][0].toString().replace(','," ");
-  //         }
-
-  //         if(finalArr.length!=0){
-
-  //           for(let i=0;i<finalArr.length;i++){
-  //               if(finalArr[i][0].toString().includes(compStr.toUpperCase()==0)){
-  //                 finalArr.push(array[i])
-  //               }
-  //             }
-
-  //         }
-        
-  //     }
-  //   return finalArr;
-  // }
-
-
 
   render(){
 
@@ -164,17 +113,19 @@ class Data extends React.Component{
     <div className="data flex-container">
 
       {this.state.albums.map(item =>
-
           <div className="flex-item">
-            <br></br>
-            <b>{item[1]}</b>
-            <div><b>{item[0]}</b></div>
-            <Album id={item[2]}/>
-
+             <b>{item[0]}</b>
+   
 
             <img src={this.covers(item[2].toString())}></img>
-          </div>
 
+
+            <br></br>
+            <b>{item[1]}</b>
+ 
+            <Album id={item[2]}/>
+
+          </div>
         )} 
 
     </div>
