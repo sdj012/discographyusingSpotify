@@ -1,0 +1,70 @@
+let scrollAmount = 0
+const container = document.documentElement
+
+window.onload = () => {
+  document.body.onkeyup = event => {
+    switch (event.code) {
+      case "Space":
+      case "PageDown":
+      case "ArrowRight": {
+        scrollAmount += window.innerWidth
+        break
+      }
+      case "PageUp":
+      case "ArrowLeft": {
+        scrollAmount -= window.innerWidth
+        break
+      }
+      case "Home":
+      case "ArrowUp": {
+        scrollAmount = 0
+        break
+      }
+      case "End":
+      case "ArrowDown": {
+        scrollAmount = container.scrollWidth
+        break
+      }
+    }
+
+    container.scrollTo({
+      top: 0,
+      left: scrollAmount,
+      behavior: "smooth"
+    })
+  }
+}
+
+// Reset the scrollAmount if the user scrolls back manually.
+window.onscroll = event => {
+  scrollAmount = container.scrollLeft
+}
+
+* {
+  margin: 0;
+  padding: 0
+}
+
+html { height: 100% }
+
+html, body, section {
+  display: flex;
+  flex-grow: 1
+}
+
+body {
+  scroll-snap-type: x mandatory;
+  scroll-snap-points-x: repeat(100%);
+  overflow-x: auto
+}
+
+section {
+  display: grid;
+  place-items: center;
+  flex: 1 0 100%;
+  scroll-snap-align: center
+}
+
+<section><h2>1</h2></section>
+<section><h2>2</h2></section>
+<section><h2>3</h2></section>

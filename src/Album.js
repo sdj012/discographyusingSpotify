@@ -12,6 +12,8 @@ class Album extends React.Component{
      id:this.props.id,
      tracks:[],
      link:[],
+     Oauth:"BQAMGp1LD3wBV8H-Ezb5D0AmeWzipc37O2CCgoejelQFYehRc0wRZVoWJdvbmcLYK0xkK9OmVfj5RGAvzd8AxqxALG4LCYDEQqyICD_T09nuBxz8gxGcgb9Y_xdDD-_ShLGXZ6CmxsHCo8Pn0d0bwDoH1uBfLso"
+
     }
     
   }
@@ -48,7 +50,7 @@ class Album extends React.Component{
     fetch("https://api.spotify.com/v1/albums/"+this.props.id+"/tracks?limit=50", {
       headers: {
         Accept: "application/json",
-        Authorization: "Bearer BQBUGplY-fmdhzGKePyKMXvBNdTZnAWGXAd3h5n3KOze05pTGtB3z78Lz97TDqQINnVOCBPSppZ6NtxayIuhW3LESUuSBJFt6qh9LPib52U4P0lEppT391_JyoC7tF_or_EyPCENE8GnTX5Smdpvn8RuQQoJr0g",
+        Authorization: "Bearer " + this.state.Oauth,
         "Content-Type": "application/json"
       }
       })   

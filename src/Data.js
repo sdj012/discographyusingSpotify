@@ -11,6 +11,7 @@ class Data extends React.Component{
       
       albums:[],
       idAndImage:[],
+      Oauth:"BQAMGp1LD3wBV8H-Ezb5D0AmeWzipc37O2CCgoejelQFYehRc0wRZVoWJdvbmcLYK0xkK9OmVfj5RGAvzd8AxqxALG4LCYDEQqyICD_T09nuBxz8gxGcgb9Y_xdDD-_ShLGXZ6CmxsHCo8Pn0d0bwDoH1uBfLso"
     }
     
   }
@@ -20,7 +21,7 @@ class Data extends React.Component{
       fetch("https://api.spotify.com/v1/artists/3Nrfpe0tUJi4K4DXYWgMUX/albums?limit=50", {
         headers: {
           Accept: "application/json",
-          Authorization: "Bearer BQBUGplY-fmdhzGKePyKMXvBNdTZnAWGXAd3h5n3KOze05pTGtB3z78Lz97TDqQINnVOCBPSppZ6NtxayIuhW3LESUuSBJFt6qh9LPib52U4P0lEppT391_JyoC7tF_or_EyPCENE8GnTX5Smdpvn8RuQQoJr0g",
+          Authorization: "Bearer " + this.state.Oauth,
           "Content-Type": "application/json"
         }
       })
@@ -107,6 +108,27 @@ class Data extends React.Component{
 
   render(){
 
+    document.onkeydown = function(e) { 
+      switch (e.keyCode) { 
+          default:
+              console.log("Key pressed!")
+              break;
+          case 37: 
+              console.log("Left Key pressed!")
+              break; 
+
+          case 39: 
+              console.log("Right Key pressed!")
+              break; 
+          // case 40: 
+          //     console.log("Down Key pressed!")
+          //     break; 
+          // case 38: 
+          //     console.log("Up Key pressed!")
+          //     break; 
+      } 
+    }
+
    
   return(
 
@@ -114,7 +136,7 @@ class Data extends React.Component{
 
       {this.state.albums.map(item =>
 
-        <div className="album">
+        <div className="album" id={item[0]}>
  
             <div className="flex-item-TrackList">
               <Album id={item[2]}/>
@@ -123,7 +145,7 @@ class Data extends React.Component{
             <div className="flex-item-Cover">
               <img src={this.covers(item[2].toString())}></img>
               <br></br>
-              {/* <b>{item[1]}</b> date*/} 
+              <b>{item[1]}</b> date 
             </div>
 
             <div className="flex-item-albumTitle">

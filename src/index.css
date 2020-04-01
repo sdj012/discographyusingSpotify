@@ -10,6 +10,7 @@ body {
   overflow-x: scroll;
 
   background-color: black;
+  /* background-color:aliceblue; */
   color: aliceblue;
   font-family: Verdana;
   font-weight: bold;
@@ -21,6 +22,7 @@ body {
   flex-direction:row;
   align-items:flex-end;
 }
+
 
 .flex-container{
   height:100%;
