@@ -11,7 +11,7 @@ class Data extends React.Component{
       
       albums:[],
       idAndImage:[],
-      Oauth:"BQAMGp1LD3wBV8H-Ezb5D0AmeWzipc37O2CCgoejelQFYehRc0wRZVoWJdvbmcLYK0xkK9OmVfj5RGAvzd8AxqxALG4LCYDEQqyICD_T09nuBxz8gxGcgb9Y_xdDD-_ShLGXZ6CmxsHCo8Pn0d0bwDoH1uBfLso"
+      Oauth:"BQC1OFZGdz_nKbgo3LPN2Bghx9BDT-kddGmPzg2z2jg0qaMH_vAHUYdqr_n_MVyA9pG6Yoq4q5OKWgI35uafulzWCRCvhodZwYtYPpwLFwqczQbwgxZ-6eA5G_iUrXHRLnfHTt9ZwJRcQ5ATx2OehVBSCGfuRyI"
     }
     
   }
@@ -131,32 +131,39 @@ class Data extends React.Component{
 
    
   return(
-
+    
     <div className="data flex-container">
 
+      <div className="title_tab">  </div>
+      
       {this.state.albums.map(item =>
 
-        <div className="album" id={item[0]}>
- 
+      
+        <div className="album">
+
+          <div className="album_b"></div>
+
             <div className="flex-item-TrackList">
               <Album id={item[2]}/>
             </div>
 
-            <div className="flex-item-Cover">
+            {/* <div className="flex-item-Cover">
               <img src={this.covers(item[2].toString())}></img>
               <br></br>
               <b>{item[1]}</b> date 
-            </div>
+            </div> */}
 
             <div className="flex-item-albumTitle">
-              <div><b>{item[0]}</b></div>
+              <b>{item[0]}</b>
             </div>
 
         </div>
-
         )} 
 
-    </div>
+        <div className="year_tab"> YEAR </div>
+
+      </div>
+
   )
   }
 }

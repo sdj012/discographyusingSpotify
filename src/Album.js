@@ -12,7 +12,7 @@ class Album extends React.Component{
      id:this.props.id,
      tracks:[],
      link:[],
-     Oauth:"BQAMGp1LD3wBV8H-Ezb5D0AmeWzipc37O2CCgoejelQFYehRc0wRZVoWJdvbmcLYK0xkK9OmVfj5RGAvzd8AxqxALG4LCYDEQqyICD_T09nuBxz8gxGcgb9Y_xdDD-_ShLGXZ6CmxsHCo8Pn0d0bwDoH1uBfLso"
+     Oauth:"BQC1OFZGdz_nKbgo3LPN2Bghx9BDT-kddGmPzg2z2jg0qaMH_vAHUYdqr_n_MVyA9pG6Yoq4q5OKWgI35uafulzWCRCvhodZwYtYPpwLFwqczQbwgxZ-6eA5G_iUrXHRLnfHTt9ZwJRcQ5ATx2OehVBSCGfuRyI"
 
     }
     
@@ -61,8 +61,7 @@ class Album extends React.Component{
 
   render(){
     return(
-      <div>
-
+      <div className="TrackList">
       {/* <div>{this.state.id}</div> */}
      {/* {this.state.tracks} */}
 
@@ -71,8 +70,6 @@ class Album extends React.Component{
         <div>
           {item}
         </div>
-
-
       )}
       
       </div>
